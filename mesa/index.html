@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa Proprietária | Jota Investimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gold: #FFD700;
+            --gold-dark: #D4AF37;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--text-on-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .login-btn {
+            background-color: var(--gold);
+            color: var(--primary) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-on-dark);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-on-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        /* Hero Section */
+        .prop-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prop-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48cGF0aCBkPSJNMCwwIEwxMDAsMCBMMTAwLDEwMCBMMCwxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJhMmEyYSIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1kYXNoYXJyYXk9IjIsMiIgLz48L3N2Zz4=');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        
+        .hero-content h1 span {
+            color: var(--gold);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .cta-primary {
+            background-color: var(--gold);
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-primary:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--text-on-dark);
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-secondary:hover {
+            background-color: var(--gold);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Explanation Section */
+        .explanation {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .explanation-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .explanation-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .explanation-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .explanation-content ul {
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        
+        .explanation-content li {
+            margin-bottom: 12px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .explanation-content li strong {
+            color: var(--primary);
+        }
+        
+        .explanation-image {
+            text-align: center;
+        }
+        
+        .explanation-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Course Section */
+        .course {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, var(--dark) 0%, var(--primary) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .course-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .course-image {
+            text-align: center;
+        }
+        
+        .course-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .course-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .course-content h2 span {
+            color: var(--gold);
+        }
+        
+        .course-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .course-features {
+            margin-bottom: 30px;
+        }
+        
+        .course-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .course-feature i {
+            margin-right: 15px;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, var(--dark) 0%, var(--primary) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Plans Section */
+        .plans {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .plans .section-title {
+            color: var(--primary);
+        }
+        
+        .plans .section-subtitle {
+            color: var(--gray);
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+        
+        .plan-card.featured {
+            border: 3px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .plan-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .plan-description {
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            min-height: 60px;
+        }
+        
+        .plan-features {
+            margin-bottom: 30px;
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--gray);
+        }
+        
+        .plan-features i {
+            margin-right: 10px;
+            color: var(--gold);
+            min-width: 16px;
+        }
+        
+        .plan-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+        
+        .plan-button.primary {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+        }
+        
+        .plan-button.primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .plan-button.secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .plan-button.secondary:hover {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .process-step p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .testimonials .section-title {
+            color: var(--primary);
+        }
+        
+        .testimonials .section-subtitle {
+            color: var(--gray);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48cGF0aCBkPSJNMCwwIEwxMDAsMCBMMTAwLDEwMCBMMCwxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRDcwMCIgc3Ryb2tlLXdpZHRoPSIwLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjIsMiIgLz48L3N2Zz4=');
+            opacity: 0.1;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+        
+        .cta-section h2 span {
+            color: var(--gold);
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .plans-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .plan-card {
+                min-height: auto;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .benefits-grid, .testimonials-grid, .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .explanation-container, .course-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .prop-hero {
+                padding-top: 130px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .benefits-grid, .testimonials-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="https://jotainvestimentos.com">
+                <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            </a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com" style="color: var(--gold); font-weight: 700;">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="prop-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">VAGAS LIMITADAS</div>
+                <h1>OPERe O <span>CAPITAL DA JOTA</span> E GANHE <span>PARTICIPAÇÃO NOS LUCROS</span></h1>
+                <p>Junte-se à elite de traders que operam capital institucional e transforme sua habilidade em resultados extraordinários.</p>
+                <div class="cta-buttons">
+                    <a href="#plans" class="cta-primary">QUERO MINHA VAGA</a>
+                    <a href="#process" class="cta-secondary">VER DETALHES</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explanation Section -->
+    <section class="explanation">
+        <div class="container">
+            <div class="explanation-container">
+                <div class="explanation-content">
+                    <h2>O QUE É UMA MESA PROPRIETÁRIA DE CRIPTO?</h2>
+                    <p>A Mesa Proprietária da Jota Investimentos é uma estrutura profissional onde traders talentosos operam o capital da empresa em troca de participação nos lucros gerados.</p>
+                    <p>Diferente de operar com seu próprio capital, aqui você tem acesso a:</p>
+                    <ul>
+                        <li><strong>Capital institucional</strong> - Sem limites baseados no seu patrimônio pessoal</li>
+                        <li><strong>Tecnologia de ponta</strong> - Plataformas profissionais e ferramentas avançadas</li>
+                        <li><strong>Mentoria especializada</strong> - Aprendizado com traders experientes</li>
+                        <li><strong>Gestão de risco profissional</strong> - Proteção contra losses catastróficos</li>
+                        <li><strong>Comunidade de elite</strong> - Networking com os melhores traders do mercado</li>
+                    </ul>
+                    <p>É a oportunidade que traders ambiciosos esperam para levar sua carreira ao próximo nível.</p>
+                </div>
+                <div class="explanation-image">
+                    <img src="https://images.unsplash.com/photo-1640340434855-6084b30f98fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mesa Proprietária">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Section -->
+    <section class="course">
+        <div class="container">
+            <div class="course-container">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Curso Incluso">
+                </div>
+                <div class="course-content">
+                    <h2>CURSO <span>COMPLETO</span> INCLUSO EM TODOS OS PLANOS</h2>
+                    <p>Mesmo que você nunca tenha operado no mercado cripto, nossos planos incluem um curso completo para iniciantes que vai te preparar para operar com excelência.</p>
+                    
+                    <div class="course-features">
+                        <div class="course-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Fundamentos do mercado cripto e análise técnica</p>
+                        </div>
+                        <div class="course-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Estratégias de entrada e saída comprovadas</p>
+                        </div>
+                        <div class="course-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Gestão de risco e controle emocional</p>
+                        </div>
+                        <div class="course-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Uso profissional da plataforma de trading</p>
+                        </div>
+                        <div class="course-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Mentoria com traders experientes da mesa</p>
+                        </div>
+                    </div>
+                    
+                    <p>Não importa seu nível de experiência, temos o conteúdo ideal para sua evolução como trader profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">POR QUE <span style="color: var(--gold);">OPERAR NA JOTA</span></h2>
+            <p class="section-subtitle">Descubra os benefícios exclusivos de fazer parte da mesa proprietária mais lucrativa do Brasil</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Capital Ilimitado</h3>
+                    <p>Opere com capital institucional sem limites, baseado apenas no seu desempenho e consistência.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Participação nos Lucros</h3>
+                    <p>Receba entre 50% e 80% dos lucros gerados por suas operações, com pagamentos semanais.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mentoria Exclusiva</h3>
+                    <p>Acesso a traders seniores com anos de experiência em mercados institucionais e alta frequência.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Plataforma profissional com execução de alta velocidade, ferramentas avançadas e dados em tempo real.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Gestão de Risco</h3>
+                    <p>Sistema profissional de risk management para proteger seu capital e maximizar resultados.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidade Elite</h3>
+                    <p>Network com os melhores traders do país e oportunidades exclusivas de networking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans" id="plans">
+        <div class="container">
+            <h2 class="section-title">ESCOLHA SEU <span style="color: var(--primary);">PLANO DE ACESSO</span></h2>
+            <p class="section-subtitle">Selecione o caminho que levará você à mesa proprietária da Jota Investimentos</p>
+            
+            <div class="plans-container">
+                <!-- Plano 1: Iniciante -->
+                <div class="plan-card">
+                    <h3 class="plan-name">INICIANTE</h3>
+                    <div class="plan-price">R$ 997<span>/único</span></div>
+                    <p class="plan-description">Ideal para quem está começando no mercado</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Curso completo para iniciantes</li>
+                        <li><i class="fas fa-check"></i> Acesso por 30 dias</li>
+                        <li><i class="fas fa-check"></i> Capital até R$ 10.000</li>
+                        <li><i class="fas fa-check"></i> Suporte básico</li>
+                        <li><i class="fas fa-check"></i> 50% de participação</li>
+                        <li><i class="fas fa-check"></i> Material introdutório</li>
+                        <li><i class="fas fa-times"></i> Mentoria individual</li>
+                        <li><i class="fas fa-times"></i> Acesso à comunidade</li>
+                    </ul>
+                    <a href="https://jotainvestimentos.com" class="plan-button secondary">ESCOLHER ESTE</a>
+                </div>
+                
+                <!-- Plano 2: Intermediário -->
+                <div class="plan-card">
+                    <h3 class="plan-name">INTERMEDIÁRIO</h3>
+                    <div class="plan-price">R$ 2.497<span>/único</span></div>
+                    <p class="plan-description">Para traders com alguma experiência</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Curso completo para iniciantes</li>
+                        <li><i class="fas fa-check"></i> Acesso por 60 dias</li>
+                        <li><i class="fas fa-check"></i> Capital até R$ 50.000</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                        <li><i class="fas fa-check"></i> 60% de participação</li>
+                        <li><i class="fas fa-check"></i> Material completo</li>
+                        <li><i class="fas fa-check"></i> 2 sessões de mentoria</li>
+                        <li><i class="fas fa-times"></i> Acesso à comunidade</li>
+                    </ul>
+                    <a href="https://jotainvestimentos.com" class="plan-button secondary">ESCOLHER ESTE</a>
+                </div>
+                
+                <!-- Plano 3: Avançado -->
+                <div class="plan-card featured">
+                    <h3 class="plan-name">AVANÇADO</h3>
+                    <div class="plan-price">R$ 4.997<span>/único</span></div>
+                    <p class="plan-description">O mais escolhido por traders profissionais</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Curso completo para iniciantes</li>
+                        <li><i class="fas fa-check"></i> Acesso por 90 dias</li>
+                        <li><i class="fas fa-check"></i> Capital até R$ 200.000</li>
+                        <li><i class="fas fa-check"></i> Suporte VIP</li>
+                        <li><i class="fas fa-check"></i> 70% de participação</li>
+                        <li><i class="fas fa-check"></i> Material premium</li>
+                        <li><i class="fas fa-check"></i> 5 sessões de mentoria</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade</li>
+                    </ul>
+                    <a href="https://jotainvestimentos.com" class="plan-button primary">ESCOLHER ESTE</a>
+                </div>
+                
+                <!-- Plano 4: Professional -->
+                <div class="plan-card">
+                    <h3 class="plan-name">PROFESSIONAL</h3>
+                    <div class="plan-price">R$ 7.997<span>/único</span></div>
+                    <p class="plan-description">Para traders com track record comprovado</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Curso completo para iniciantes</li>
+                        <li><i class="fas fa-check"></i> Acesso por 120 dias</li>
+                        <li><i class="fas fa-check"></i> Capital até R$ 500.000</li>
+                        <li><i class="fas fa-check"></i> Suporte personalizado</li>
+                        <li><i class="fas fa-check"></i> 75% de participação</li>
+                        <li><i class="fas fa-check"></i> Material avançado</li>
+                        <li><i class="fas fa-check"></i> 8 sessões de mentoria</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade</li>
+                    </ul>
+                    <a href="https://jotainvestimentos.com" class="plan-button secondary">ESCOLHER ESTE</a>
+                </div>
+                
+                <!-- Plano 5: Elite -->
+                <div class="plan-card">
+                    <h3 class="plan-name">ELITE</h3>
+                    <div class="plan-price">R$ 14.997<span>/único</span></div>
+                    <p class="plan-description">Experiência completa para os melhores</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Curso completo para iniciantes</li>
+                        <li><i class="fas fa-check"></i> Acesso vitalício</li>
+                        <li><i class="fas fa-check"></i> Capital ilimitado</li>
+                        <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                        <li><i class="fas fa-check"></i> 80% de participação</li>
+                        <li><i class="fas fa-check"></i> Material exclusivo</li>
+                        <li><i class="fas fa-check"></i> Mentoria ilimitada</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade</li>
+                    </ul>
+                    <a href="https://jotainvestimentos.com" class="plan-button secondary">ESCOLHER ESTE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">COMO <span style="color: var(--gold);">FUNCIONA</span></h2>
+            <p class="section-subtitle">O caminho para você começar a operar capital institucional da Jota</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Escolha seu Plano</h3>
+                    <p>Selecione um dos planos de acesso de acordo com seu nível de experiência e objetivos.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Faça o Exame</h3>
+                    <p>Realize nossa avaliação técnica e demonstre sua capacidade de gerar resultados consistentes.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Acesse a Plataforma</h3>
+                    <p>Após a aprovação, você receberá acesso à nossa plataforma profissional com capital alocado.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Comece a Operar</h3>
+                    <p>Execute suas estratégias, participe dos lucros e cresça dentro da nossa estrutura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">QUEM <span style="color: var(--primary);">CHEGOU LÁ</span></h2>
+            <p class="section-subtitle">Veja o que dizem os traders que operam na mesa proprietária da Jota</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Em 6 meses operando na Jota, alcancei resultados que não conseguiria em anos com meu capital próprio. A estrutura é simplesmente incomparável."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Carlos Mendes">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>Trader Senior</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "A mentoria fez toda a diferença na minha evolução. Os traders seniores da Jota compartilham conhecimentos que você não encontra em lugar nenhum."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Amanda Costa">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amanda Costa</h4>
+                            <p>Trader Professional</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Os pagamentos semanais de participação nos lucros são uma motivação extra incrível. Nunca imaginei que poderia ganhar tanto operando."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Ricardo Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ricardo Oliveira</h4>
+                            <p>Trader Elite</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>SUA JORNADA COMO <span>TRADER INSTITUCIONAL</span> COMEÇA AGORA</h2>
+                <p>Não espere mais para transformar seu potencial em resultados extraordinários. Junte-se à elite de traders da Jota Investimentos.</p>
+                <a href="#plans" class="cta-primary">GARANTIR MINHA VAGA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                        <li><a href="https://jotainvestimentos.com">Robôs de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Cursos Educativos</a></li>
+                        <li><a href="https://jotainvestimentos.com">Sinais de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Domador de Leão</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="mailto:mesa@jotainvestimentos.com">mesa@jotainvestimentos.com</a></li>
+                        <li><a href="https://jotainvestimentos.com">Dúvidas Frequentes</a></li>
+                        <li><a href="https://jotainvestimentos.com">Trabalhe Conosco</a></li>
+                        <li><a href="https://jotainvestimentos.com">Área do Aluno</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

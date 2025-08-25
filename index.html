@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jota Investimentos | Mercado Cripto em 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gray: #6e6e73;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark);
+        }
+        
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--text-on-dark) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            background: linear-gradient(to bottom, var(--light) 0%, #ffffff 100%);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .accent-text {
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .cta-primary {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-secondary:hover {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Domador de Leão Section */
+        .domador-leao {
+            background-color: var(--light);
+        }
+        
+        .domador-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .domador-image {
+            text-align: center;
+        }
+        
+        .domador-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .domador-content h2 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+        
+        .domador-content p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .features .section-title, .features .section-subtitle {
+            color: var(--text-on-dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, #1c1c1c, #242424);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--text-on-dark);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+        
+        .service-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .service-tab {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .service-header {
+            padding: 25px 30px;
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .service-content.active {
+            padding: 30px;
+            max-height: 500px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-on-dark);
+            text-align: center;
+        }
+        
+        .stats-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stats-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .stats-content p {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            color: #d2d2d7;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-on-dark);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Ebook Section */
+        .ebook {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .ebook-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .ebook-image {
+            text-align: center;
+        }
+        
+        .ebook-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .ebook-content h2 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .ebook-content p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #d2d2d7;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        /* Methodology Section */
+        .methodology {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .methodology .section-title {
+            color: var(--text-on-dark);
+        }
+        
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .methodology-step {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .step-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+        }
+        
+        .methodology-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .methodology-step p {
+            color: #d2d2d7;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-on-dark);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-on-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--text-on-dark);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .features-grid, .testimonials-grid, .team-grid, .stats-grid, .methodology-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content, .domador-container, .ebook-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 130px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid, .testimonials-grid, .team-grid, .stats-grid, .methodology-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .domador-container, .ebook-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-header {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+            
+            .service-content.active {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                gap: 15px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>DOMINE O MERCADO CRIPTO EM 2025 E <span class="accent-text">MULTIPLIQUE SEU PATRIMÔNIO</span></h1>
+                <p>Na Jota Investimentos, nós quebramos as barreiras do sistema financeiro tradicional para trazer as melhores oportunidades do universo cripto diretamente para você. Gere riqueza real com estratégias comprovadas.</p>
+                <div class="cta-buttons">
+                    <a href="https://jotainvestimentos.com" class="cta-primary">ACESSAR PLATAFORMA</a>
+                    <a href="https://jotainvestimentos.com" class="cta-secondary">VER DEPOIMENTOS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domador de Leão Section -->
+    <section class="domador-leao">
+        <div class="container">
+            <div class="domador-container">
+                <div class="domador-image">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Domador de Leão - Redução de Impostos">
+                </div>
+                <div class="domador-content">
+                    <h2>PAGUE MENOS IMPOSTOS DE FORMA LEGAL E SEGURA</h2>
+                    <p>O <strong>Domador de Leão</strong> é um serviço exclusivo da Jota Investimentos que ajuda investidores e empresários a reduzirem significativamente sua carga tributária através de estratégias legais e comprovadas.</p>
+                    <p>Nossa equipe de especialistas em tributação identifica oportunidades dentro da legislação brasileira para você manter mais do seu dinheiro trabalhando para você.</p>
+                    <a href="https://jotainvestimentos.com" class="cta-primary">CONHEÇA O DOMADOR DE LEÃO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">VANTAGENS <span class="accent-text">EXCLUSIVAS</span></h2>
+            <p class="section-subtitle">Descubra por que a Jota Investimentos é a escolha certa para seus investimentos em criptomoedas</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Estratégias Comprovadas</h3>
+                    <p>Metodologias testadas e aprovadas por especialistas do mercado cripto, com resultados consistentes mesmo em cenários voláteis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educação de Alta Performance</h3>
+                    <p>Conteúdo educacional completo e atualizado para 2025, do iniciante ao trader avançado, com técnicas de gerenciamento de risco.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Robôs e ferramentas de análise que identificam oportunidades no mercado 24/7, executando operações com precisão milimétrica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">NOSSOS <span class="accent-text">SERVIÇOS</span></h2>
+            <p class="section-subtitle">Conheça as soluções exclusivas que desenvolvemos para acelerar sua jornada no mercado cripto</p>
+            <div class="service-tabs">
+                <div class="service-tab">
+                    <div class="service-header">
+                        Mesa Proprietária
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content">
+                        <p>Nossa mesa proprietária oferece insights exclusivos e estratégias de trading institucionais adaptadas para investidores individuais. Acesse relatórios detalhados, análises técnicas e fundamentais do mercado cripto.</p>
+                        <p>Receba sinais em tempo real e aprenda a tomar decisões assertivas baseadas em dados concretos e análise profissional.</p>
+                    </div>
+                </div>
+                <div class="service-tab">
+                    <div class="service-header">
+                        Robôs de Trading
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content">
+                        <p>Automatize seus investimentos com nossos robôs de trading desenvolvidos por especialistas. Eles operam 24/7 identificando oportunidades e executando operações com disciplina emocional.</p>
+                        <p>Escolha entre estratégias conservadoras, moderadas ou agressivas, de acordo com seu perfil de investidor e objetivos financeiros.</p>
+                    </div>
+                </div>
+                <div class="service-tab">
+                    <div class="service-header">
+                        Cursos Educativos
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content">
+                        <p>Educação é a base para investimentos bem-sucedidos. Oferecemos cursos desde o nível iniciante até avançado, com conteúdo atualizado para o mercado de 2025.</p>
+                        <p>Aprenda análise técnica, fundamentalista, gestão de risco e psicologia do trading com profissionais experientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-content">
+                <h2>CONFIANça E EXPERIÊNCIA COMPROVADAS</h2>
+                <p>Há anos ajudamos investidores a conquistarem liberdade financeira através de estratégias inteligentes e educação de qualidade no mercado cripto.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">+40.000</div>
+                    <div class="stat-label">Alunos Transformados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">60</div>
+                    <div class="stat-label">Meses no Mercado</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">94,7%</div>
+                    <div class="stat-label">Satisfação dos Clientes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">QUEM USA <span class="accent-text">RECOMENDA</span></h2>
+            <p class="section-subtitle">Veja o que nossos clientes estão falando sobre a Jota Investimentos</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Desde que comecei a seguir os sinais da Mesa Proprietária, meus resultados deram um salto. Em 3 meses, obtive um retorno de 137% na minha carteira."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Trader há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Os robôs da Jota transformaram completamente minha forma de investir. Agora consigo ter rendimentos consistentes mesmo sem acompanhar o mercado o dia todo."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Amanda Santos">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amanda Santos</h4>
+                            <p>Investidora desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Os cursos são simplesmente fantásticos. Aprendi mais em 1 mês com a Jota do que em 2 anos estudando por conta própria. Vale cada centavo!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Ricardo Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ricardo Oliveira</h4>
+                            <p>Aluno VIP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ebook Section -->
+    <section class="ebook">
+        <div class="container">
+            <div class="ebook-container">
+                <div class="ebook-image">
+                    <img src="https://storylab.ai/wp-content/uploads/2024/06/Technology-eBook-Idea-Examples.png" alt="Ebook Criptomoedas">
+                </div>
+                <div class="ebook-content">
+                    <h2>GUIA DEFINITIVO PARA COMEÇAR NO MERCADO CRIPTO</h2>
+                    <p>Baixe gratuitamente nosso ebook e aprenda os fundamentos do mercado de criptomoedas, como evitar armadilhas comuns e quais as estratégias mais eficazes para iniciantes.</p>
+                    <a href="https://jotainvestimentos.com" class="cta-primary">BAIXAR EBOOK AGORA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">NOSSA <span class="accent-text">EQUIPE</span></h2>
+            <p class="section-subtitle">Conheça os especialistas por trás da Jota Investimentos</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="João Mendes">
+                    </div>
+                    <h3>João Mendes</h3>
+                    <p>Fundador & CEO</p>
+                    <p>12 anos de experiência em mercados financeiros, ex-trader de mesa proprietária em grandes bancos de investimento.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Mariana Costa">
+                    </div>
+                    <h3>Mariana Costa</h3>
+                    <p>Head de Análise</p>
+                    <p>Especialista em criptoativos e análise técnica, com passagem por importantes fundos de investimento em cripto.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Pedro Alcantara">
+                    </div>
+                    <h3>Pedro Alcantara</h3>
+                    <p>CTO</p>
+                    <p>Desenvolvedor de sistemas de trading algorítmico com mais de 8 anos de experiência em mercados de alta frequência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="container">
+            <h2 class="section-title">NOSSA <span class="accent-text">METODOLOGIA</span></h2>
+            <p class="section-subtitle">Conheça o processo que desenvolvemos para garantir seus resultados no mercado cripto</p>
+            <div class="methodology-steps">
+                <div class="methodology-step">
+                    <div class="step-number">01</div>
+                    <h3>Análise</h3>
+                    <p>Realizamos uma análise profunda do mercado utilizando ferramentas institucionais e algoritmos proprietários.</p>
+                </div>
+                <div class="methodology-step">
+                    <div class="step-number">02</div>
+                    <h3>Estratégia</h3>
+                    <p>Desenvolvemos estratégias personalizadas de acordo com seu perfil de risco e objetivos financeiros.</p>
+                </div>
+                <div class="methodology-step">
+                    <div class="step-number">03</div>
+                    <h3>Execução</h3>
+                    <p>Implementamos as operações com disciplina e gestão de risco rigorosa, seja manualmente ou através de robôs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>PRONTO PARA TRANSFORMAR SEUS RESULTADOS?</h2>
+            <p>Junte-se a milhares de investidores que já descobriram como gerar renda consistente no mercado cripto com a Jota Investimentos.</p>
+            <a href="https://jotainvestimentos.com" class="cta-primary">COMEÇAR AGORA MESMO</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                        <li><a href="https://jotainvestimentos.com">Robôs de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Cursos Educativos</a></li>
+                        <li><a href="https://jotainvestimentos.com">Sinais de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Domador de Leão</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Sobre Nós</a></li>
+                        <li><a href="https://jotainvestimentos.com">Blog</a></li>
+                        <li><a href="https://jotainvestimentos.com">Carreiras</a></li>
+                        <li><a href="https://jotainvestimentos.com">Contato</a></li>
+                        <li><a href="https://jotainvestimentos.com">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Jurídico</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Service tabs functionality
+        const serviceHeaders = document.querySelectorAll('.service-header');
+        
+        serviceHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isActive = content.classList.contains('active');
+                
+                // Close all tabs
+                document.querySelectorAll('.service-content').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // If it wasn't active, open it
+                if (!isActive) {
+                    content.classList.add('active');
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

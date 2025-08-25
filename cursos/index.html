@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos | Jota Investimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gray: #6e6e73;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark);
+        }
+        
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--text-on-dark) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
+        /* Hero Section */
+        .courses-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(to bottom, var(--light) 0%, #ffffff 100%);
+            position: relative;
+            text-align: center;
+        }
+        
+        .courses-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .courses-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .courses-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .accent-text {
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .cta-primary {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-secondary:hover {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Courses Grid */
+        .courses {
+            background-color: var(--light);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .course-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        .course-features {
+            margin-bottom: 25px;
+        }
+        
+        .course-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .course-features i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .benefits .section-title {
+            color: var(--text-on-dark);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .benefit-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--text-on-dark);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: #d2d2d7;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .faq .section-title {
+            color: var(--text-on-dark);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .faq-question {
+            padding: 20px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 0 20px;
+            color: #d2d2d7;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-on-dark);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-on-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--text-on-dark);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .benefits-grid, .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .courses-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .courses-hero {
+                padding-top: 130px;
+            }
+            
+            .courses-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .courses-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .benefits-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .courses-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="https://jotainvestimentos.com">
+                <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            </a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com" style="color: var(--primary); font-weight: 700;">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="courses-hero">
+        <div class="container">
+            <div class="courses-hero-content">
+                <h1>EDUCAÇÃO FINANCEIRA <span class="accent-text">QUE TRANSFORMA</span></h1>
+                <p>Descubra nossos cursos exclusivos e aprenda as estratégias que estão gerando resultados reais no mercado cripto. Do iniciante ao trader avançado, temos o conteúdo ideal para sua evolução.</p>
+                <div class="cta-buttons">
+                    <a href="#courses" class="cta-primary">VER CURSOS</a>
+                    <a href="https://jotainvestimentos.com" class="cta-secondary">FALAR COM CONSULTOR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">NOSSOS <span class="accent-text">CURSOS</span></h2>
+            <p class="section-subtitle">Escolha o curso ideal para sua jornada no mercado cripto</p>
+            
+            <div class="courses-grid">
+                <!-- Flow & Gain -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flow & Gain">
+                    </div>
+                    <div class="course-content">
+                        <h3>Flow & Gain</h3>
+                        <p>Domine a arte de identificar e capitalizar os fluxos de capital no mercado cripto. Aprenda a entrar e sair de operações no momento certo.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Duração: 8 semanas</li>
+                            <li><i class="fas fa-check"></i> Nível: Intermediário</li>
+                            <li><i class="fas fa-check"></i> Acesso vitalício</li>
+                            <li><i class="fas fa-check"></i> Suporte individualizado</li>
+                        </ul>
+                        <div class="course-price">R$ 2.497,00 <span>ou 12x de R$ 229,90</span></div>
+                        <a href="https://jotainvestimentos.com" class="cta-primary">SAIBA MAIS</a>
+                    </div>
+                </div>
+                
+                <!-- Trend Expert -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1613243555978-636c48dc653c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trend Expert">
+                    </div>
+                    <div class="course-content">
+                        <h3>Trend Expert</h3>
+                        <p>Aprenda a identificar tendências emergentes antes do mercado e posicione-se para maximizar ganhos durante os movimentos de alta.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Duração: 6 semanas</li>
+                            <li><i class="fas fa-check"></i> Nível: Intermediário</li>
+                            <li><i class="fas fa-check"></i> Indicadores exclusivos</li>
+                            <li><i class="fas fa-check"></i> Análises em tempo real</li>
+                        </ul>
+                        <div class="course-price">R$ 1.997,00 <span>ou 12x de R$ 189,90</span></div>
+                        <a href="https://jotainvestimentos.com" class="cta-primary">SAIBA MAIS</a>
+                    </div>
+                </div>
+                
+                <!-- Palavras do Mestre -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1640340434855-6084b30f98fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Palavras do Mestre">
+                    </div>
+                    <div class="course-content">
+                        <h3>Palavras do Mestre</h3>
+                        <p>Acesso aos insights e estratégias dos melhores traders do mercado. Aprenda com quem já percorreu o caminho que você deseja seguir.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Duração: 12 semanas</li>
+                            <li><i class="fas fa-check"></i> Nível: Avançado</li>
+                            <li><i class="fas fa-check"></i> Mentores especialistas</li>
+                            <li><i class="fas fa-check"></i> Masterclasses exclusivas</li>
+                        </ul>
+                        <div class="course-price">R$ 4.997,00 <span>ou 12x de R$ 479,90</span></div>
+                        <a href="https://jotainvestimentos.com" class="cta-primary">SAIBA MAIS</a>
+                    </div>
+                </div>
+                
+                <!-- Clube Cripto Milionários -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1620336655055-bd87ca8f1370?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clube Cripto Milionários">
+                    </div>
+                    <div class="course-content">
+                        <h3>Clube Cripto Milionários</h3>
+                        <p>Junte-se a um grupo seleto de investidores que estão transformando seu patrimônio com estratégias avançadas no mercado cripto.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Acesso mensal</li>
+                            <li><i class="fas fa-check"></i> Nível: Avançado</li>
+                            <li><i class="fas fa-check"></i> Comunidade exclusiva</li>
+                            <li><i class="fas fa-check"></i> Calls semanais</li>
+                        </ul>
+                        <div class="course-price">R$ 997,00 <span>/mês</span></div>
+                        <a href="https://jotainvestimentos.com" class="cta-primary">SAIBA MAIS</a>
+                    </div>
+                </div>
+                
+                <!-- Mentoria Sniper -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1614689540268-6b5c5e212fb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mentoria Sniper">
+                    </div>
+                    <div class="course-content">
+                        <h3>Mentoria Sniper</h3>
+                        <p>Mentoria individualizada para traders que desejam aperfeiçoar suas estratégias e maximizar seus resultados com acompanhamento próximo.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Duração: 16 semanas</li>
+                            <li><i class="fas fa-check"></i> Nível: Todos os níveis</li>
+                            <li><i class="fas fa-check"></i> Acompanhamento 1:1</li>
+                            <li><i class="fas fa-check"></i> Planos personalizados</li>
+                        </ul>
+                        <div class="course-price">R$ 7.497,00 <span>ou 12x de R$ 729,90</span></div>
+                        <a href="https://jotainvestimentos.com" class="cta-primary">SAIBA MAIS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">VANTAGENS <span class="accent-text">EXCLUSIVAS</span></h2>
+            <p class="section-subtitle">Por que escolher os cursos da Jota Investimentos</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Conteúdo Atualizado</h3>
+                    <p>Nossos cursos são constantemente atualizados para refletir as mudanças do mercado cripto.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidade Exclusiva</h3>
+                    <p>Tenha acesso a uma comunidade de traders onde você pode compartilhar ideias e estratégias.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte Individual</h3>
+                    <p>Nossa equipe está sempre disponível para tirar dúvidas e oferecer suporte personalizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">ALUNOS <span class="accent-text">SATISFEITOS</span></h2>
+            <p class="section-subtitle">Veja o que nossos alunos estão falando sobre os cursos</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "O Flow & Gain mudou completamente minha forma de operar. Em 3 meses já recuperei o valor investido no curso várias vezes!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Aluno Flow & Gain</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "A Mentoria Sniper foi o melhor investimento que já fiz. A evolução no meu trading foi absurdamente rápida com acompanhamento personalizado."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Amanda Santos">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amanda Santos</h4>
+                            <p>Aluna Mentoria Sniper</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "O Clube Cripto Milionários me deu acesso a estratégias que eu nunca encontraria por conta própria. A comunidade é incrível!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Ricardo Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ricardo Oliveira</h4>
+                            <p>Membro do Clube</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">DÚVIDAS <span class="accent-text">FREQUENTES</span></h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre nossos cursos</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Por quanto tempo tenho acesso ao curso?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Todos os nossos cursos oferecem acesso vitalício. Uma vez que você se matricula, pode acessar o conteúdo para sempre, incluindo todas as atualizações futuras.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter experiência prévia?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Temos cursos para todos os níveis. Desde iniciantes absolutos até traders experientes. Cada curso indica claramente o nível de experiência recomendado.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como é o suporte aos alunos?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Oferecemos suporte por email, Telegram exclusivo para alunos e para alguns cursos, sessões de Q&A semanais com nossos especialistas.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Os cursos oferecem garantia?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Todos os cursos têm garantia incondicional de 7 dias. Se você não ficar satisfeito, devolvemos 100% do valor investido.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>PRONTO PARA TRANSFORMAR SEUS INVESTIMENTOS?</h2>
+            <p>Junte-se a milhares de alunos que já descobriram como gerar resultados consistentes no mercado cripto com a Jota Investimentos.</p>
+            <a href="https://jotainvestimentos.com" class="cta-primary">ESCOLHER MEU CURSO</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Flow & Gain</a></li>
+                        <li><a href="https://jotainvestimentos.com">Trend Expert</a></li>
+                        <li><a href="https://jotainvestimentos.com">Palavras do Mestre</a></li>
+                        <li><a href="https://jotainvestimentos.com">Clube Cripto Milionários</a></li>
+                        <li><a href="https://jotainvestimentos.com">Mentoria Sniper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Sobre Nós</a></li>
+                        <li><a href="https://jotainvestimentos.com">Blog</a></li>
+                        <li><a href="https://jotainvestimentos.com">Carreiras</a></li>
+                        <li><a href="https://jotainvestimentos.com">Contato</a></li>
+                        <li><a href="https://jotainvestimentos.com">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Jurídico</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+        
+        // FAQ functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer) {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Toggle current answer
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+        
+        // Initially hide all answers
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow & Gain | Jota Investimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gray: #6e6e73;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark);
+        }
+        
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--text-on-dark) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        /* Hero Section */
+        .sales-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(to bottom, var(--light) 0%, #ffffff 100%);
+            position: relative;
+        }
+        
+        .sales-hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .hero-highlight {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-highlight ul {
+            margin-left: 20px;
+        }
+        
+        .hero-highlight li {
+            margin-bottom: 10px;
+        }
+        
+        .price-container {
+            margin-bottom: 30px;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+        
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .installments {
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 20px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .guarantee {
+            text-align: center;
+            color: var(--gray);
+        }
+        
+        .hero-image {
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .benefit-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--text-on-dark);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: #d2d2d7;
+            line-height: 1.6;
+        }
+        
+        /* Modules Section */
+        .modules {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .modules .section-title {
+            color: var(--primary);
+        }
+        
+        .modules .section-subtitle {
+            color: var(--gray);
+        }
+        
+        .modules-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .module-item {
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+        }
+        
+        .module-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .module-item p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* For Whom Section */
+        .for-whom {
+            padding: 100px 0;
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+        }
+        
+        .for-whom-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .for-whom-content h2 {
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .audience-list {
+            margin-bottom: 30px;
+        }
+        
+        .audience-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .audience-item i {
+            margin-right: 15px;
+            color: var(--text-on-dark);
+            font-size: 1.2rem;
+        }
+        
+        .not-for-list {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .not-for-list h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .testimonials .section-title {
+            color: var(--primary);
+        }
+        
+        .testimonials .section-subtitle {
+            color: var(--gray);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Results Section */
+        .results {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+            text-align: center;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .result-item {
+            padding: 30px;
+        }
+        
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .result-label {
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .faq .section-title {
+            color: var(--primary);
+        }
+        
+        .faq .section-subtitle {
+            color: var(--gray);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .faq-question {
+            padding: 20px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 0 20px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary) 0%, var(--dark) 100%);
+            color: var(--text-on-dark);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            color: #d2d2d7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-on-dark);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-on-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--text-on-dark);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            display: none;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .benefits-grid, .testimonials-grid, .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content, .sales-hero-container, .for-whom-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .sales-hero {
+                padding-top: 130px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .benefits-grid, .testimonials-grid, .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .floating-cta {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .new-price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="https://jotainvestimentos.com">
+                <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            </a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="sales-hero">
+        <div class="container sales-hero-container">
+            <div class="hero-content">
+                <h1>FLOW & GAIN: DOMINE OS <span style="color: var(--primary);">FLUXOS DE CAPITAL</span> DO MERCADO CRIPTO</h1>
+                <p>Aprenda a identificar e capitalizar os movimentos do mercado antes da maioria dos traders e transforme sua operação com estratégias de fluxo de capital comprovadas.</p>
+                
+                <div class="hero-highlight">
+                    <h3>O que você vai conquistar:</h3>
+                    <ul>
+                        <li>Identificar oportunidades antes do mercado</li>
+                        <li>Entrar e sair de operações no momento ideal</li>
+                        <li>Maximizar seus ganhos com gestão de risco inteligente</li>
+                        <li>Desenvolver a mentalidade de um trader profissional</li>
+                    </ul>
+                </div>
+                
+                <div class="price-container">
+                    <div class="old-price">De R$ 2.997,00</div>
+                    <div class="new-price">Por R$ 2.497,00</div>
+                    <div class="installments">ou 12x de R$ 229,90</div>
+                </div>
+                
+                <a href="https://jotainvestimentos.com" class="cta-button">QUERO ME INSCREVER AGORA</a>
+                
+                <div class="guarantee">
+                    <p><i class="fas fa-shield-alt"></i> Garantia de 7 dias ou seu dinheiro de volta</p>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flow & Gain">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">O QUE TORNA O <span style="color: var(--text-on-dark);">FLOW & GAIN</span> ÚNICO</h2>
+            <p class="section-subtitle">Descubra por que este curso é diferente de tudo que você já viu no mercado</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Estratégias Comprovadas</h3>
+                    <p>Metodologias testadas e validadas em diferentes condições de mercado, com resultados consistentes.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Suporte Individual</h3>
+                    <p>Acesso direto aos instrutores para tirar dúvidas e receber orientações personalizadas.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Acesso Vitalício</h3>
+                    <p>Uma vez inscrito, você tem acesso permanente ao conteúdo e todas as atualizações futuras.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidade Exclusiva</h3>
+                    <p>Network com traders de alto nível e troca de experiências valiosas.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Conteúdo Mobile</h3>
+                    <p>Acesse as aulas de qualquer dispositivo, no horário que for mais conveniente para você.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Ferramentas Exclusivas</h3>
+                    <p>Planilhas, indicadores e robôs para automatizar suas análises e operações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="modules">
+        <div class="container">
+            <h2 class="section-title">O QUE VOCÊ <span style="color: var(--primary);">VAI APRENDER</span></h2>
+            <p class="section-subtitle">Um currículo completo para dominar os fluxos de capital no mercado cripto</p>
+            
+            <div class="modules-container">
+                <div class="module-item">
+                    <h3>Módulo 1: Fundamentos dos Fluxos de Capital</h3>
+                    <p>Entenda como o dinheiro se move no mercado cripto e aprenda a identificar os principais indicadores de fluxo de capital.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Módulo 2: Análise Técnica Aplicada</h3>
+                    <p>Domine os indicadores técnicos mais eficazes para identificar pontos de entrada e saída com alta probabilidade.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Módulo 3: Estratégias de Entrada</h3>
+                    <p>Aprenda técnicas específicas para entrar em operações no momento ideal, maximizando o risco-retorno.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Módulo 4: Gestão de Risco e Patrimônio</h3>
+                    <p>Desenvolva uma gestão profissional para proteger seu capital e maximizar os ganhos no longo prazo.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Módulo 5: Psicologia do Trading</h3>
+                    <p>Controle suas emoções e desenvolva a mentalidade necessária para tomar decisões racionais sob pressão.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Módulo 6: Casos Reais e Análises</h3>
+                    <p>Estude casos reais de operações bem-sucedidas e aprenda com exemplos práticos do mercado.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Bônus Exclusivo: Robô de Análise de Fluxos</h3>
+                    <p>Receba um robô exclusivo que ajuda a identificar automaticamente os melhores fluxos de capital no mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Whom Section -->
+    <section class="for-whom">
+        <div class="container for-whom-container">
+            <div class="for-whom-content">
+                <h2>PARA QUEM É O <span style="color: var(--text-on-dark);">FLOW & GAIN</span></h2>
+                
+                <div class="audience-list">
+                    <div class="audience-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Traders iniciantes que querem acelerar sua curva de aprendizado</p>
+                    </div>
+                    
+                    <div class="audience-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Investidores experientes que buscam estratégias mais sofisticadas</p>
+                    </div>
+                    
+                    <div class="audience-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Pessoas que querem operar no mercado cripto com mais consistência</p>
+                    </div>
+                    
+                    <div class="audience-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Quem busca independência financeira através do trading</p>
+                    </div>
+                </div>
+                
+                <div class="not-for-list">
+                    <h3>Não é para:</h3>
+                    <p>Quem busca enriquecer rápido sem esforço ou não está disposto a dedicar tempo para aprender e praticar.</p>
+                </div>
+            </div>
+            
+            <div class="for-whom-image">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Para quem é o curso">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">QUEM FEZ <span style="color: var(--primary);">ACREDITA</span></h2>
+            <p class="section-subtitle">Veja o que nossos alunos estão falando sobre o Flow & Gain</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "O Flow & Gain mudou completamente minha forma de operar. Em 3 meses já recuperei o valor investido no curso várias vezes!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Aluno desde Maio/2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As estratégias de fluxo de capital me permitiram identificar oportunidades que eu nunca enxergaria antes. Resultados consistentes!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Amanda Santos">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amanda Santos</h4>
+                            <p>Aluna desde Junho/2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "A parte de psicologia do trading foi transformadora para mim. Finalmente consigo controlar minhas emoções nas operações."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.underblock.com.br/wp-content/uploads/2024/10/depo-3.jpg" alt="Ricardo Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ricardo Oliveira</h4>
+                            <p>Aluno desde Abril/2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2 class="section-title">RESULTADOS <span style="color: var(--text-on-dark);">COMPROVADOS</span></h2>
+            <p class="section-subtitle">Números que mostram a eficácia da metodologia Flow & Gain</p>
+            
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">94%</div>
+                    <div class="result-label">dos alunos recomendam</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-number">R$ 12,7Mi</div>
+                    <div class="result-label">em lucro gerado por alunos</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-number">1.200+</div>
+                    <div class="result-label">alunos transformados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">PERGUNTAS <span style="color: var(--primary);">FREQUENTES</span></h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre o Flow & Gain</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter experiência prévia com trading?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Não! O Flow & Gain foi desenvolvido para atender desde iniciantes absolutos até traders experientes. Temos um módulo especial para fundamentos que garante que todos comecem no mesmo nível.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Por quanto tempo tenho acesso ao curso?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Você tem acesso vitalício ao curso! Isso inclui todas as atualizações futuras que fizermos no conteúdo.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quanto tempo preciso dedicar por semana?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Recomendamos dedicar pelo menos 5-7 horas por semana para estudar o conteúdo e praticar as estratégias. O curso foi projetado para ser concluído em 8 semanas, mas você pode ir no seu próprio ritmo.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        O curso oferece garantia?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Oferecemos garantia incondicional de 7 dias. Se você não ficar satisfeito com o curso, devolvemos 100% do seu investimento.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Vou ter suporte para tirar dúvidas?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Com certeza! Você terá acesso ao nosso grupo exclusivo no Telegram onde pode tirar dúvidas diretamente com os instrutores e outros alunos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>PRONTO PARA DOMINAR OS FLUXOS DE CAPITAL?</h2>
+            <p>Junte-se a centenas de traders que já transformaram seus resultados com o Flow & Gain. Garanta sua vaga agora!</p>
+            
+            <div class="price-container">
+                <div class="old-price">De R$ 2.997,00</div>
+                <div class="new-price">Por R$ 2.497,00</div>
+                <div class="installments">ou 12x de R$ 229,90</div>
+            </div>
+            
+            <a href="https://jotainvestimentos.com" class="cta-button">QUERO ME INSCREVER AGORA</a>
+            
+            <div class="guarantee">
+                <p><i class="fas fa-shield-alt"></i> Garantia de 7 dias ou seu dinheiro de volta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Flow & Gain</a></li>
+                        <li><a href="https://jotainvestimentos.com">Trend Expert</a></li>
+                        <li><a href="https://jotainvestimentos.com">Palavras do Mestre</a></li>
+                        <li><a href="https://jotainvestimentos.com">Clube Cripto Milionários</a></li>
+                        <li><a href="https://jotainvestimentos.com">Mentoria Sniper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Sobre Nós</a></li>
+                        <li><a href="https://jotainvestimentos.com">Blog</a></li>
+                        <li><a href="https://jotainvestimentos.com">Carreiras</a></li>
+                        <li><a href="https://jotainvestimentos.com">Contato</a></li>
+                        <li><a href="https://jotainvestimentos.com">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Jurídico</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <a href="https://jotainvestimentos.com" class="floating-cta">QUERO ME INSCREVER</a>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+        
+        // FAQ functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer) {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Toggle current answer
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+        
+        // Initially hide all answers
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+        
+        // Show floating CTA on scroll
+        window.addEventListener('scroll', function() {
+            const floatingCta = document.querySelector('.floating-cta');
+            if (window.scrollY > 500) {
+                floatingCta.style.display = 'block';
+            } else {
+                floatingCta.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

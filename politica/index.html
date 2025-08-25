@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Jota Investimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gray: #6e6e73;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark);
+        }
+        
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--text-on-dark) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        /* Hero Section */
+        .privacy-hero {
+            padding-top: 150px;
+            padding-bottom: 50px;
+            background: linear-gradient(to bottom, var(--light) 0%, #ffffff 100%);
+            text-align: center;
+        }
+        
+        .privacy-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .privacy-hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Privacy Content */
+        .privacy-content {
+            padding: 50px 0;
+            background-color: var(--light);
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: var(--primary);
+        }
+        
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .privacy-section ul, .privacy-section ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .important-note {
+            background-color: #fff8e6;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .important-note h4 {
+            color: #d4a424;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .definition-box {
+            background-color: #f0f5ff;
+            border-left: 4px solid #3d5afe;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .definition-box h4 {
+            color: #3d5afe;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-on-dark);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-on-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--text-on-dark);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .privacy-hero {
+                padding-top: 130px;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .privacy-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .privacy-section h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="https://jotainvestimentos.com">
+                <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            </a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1>Política de Privacidade</h1>
+            <p>Saiba como a Jota Investimentos protege e utiliza suas informações pessoais</p>
+        </div>
+    </section>
+
+    <!-- Last Updated -->
+    <div class="last-updated">
+        <div class="container">
+            <p><strong>Última atualização:</strong> 25 de Agosto de 2025</p>
+        </div>
+    </div>
+
+    <!-- Privacy Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="privacy-section">
+                <h2>1. Introdução</h2>
+                <p>A Jota Investimentos valoriza a privacidade e a segurança de seus clientes e usuários. Esta Política de Privacidade descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+                <p>Ao utilizar nossos serviços, você concorda com as práticas descritas nesta política. Recomendamos que você leia atentamente este documento para entender nossas práticas de privacidade.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>2. Definições</h2>
+                <div class="definition-box">
+                    <h4>Para fins desta Política de Privacidade:</h4>
+                    <ul>
+                        <li><strong>Dados Pessoais:</strong> Qualquer informação relacionada a pessoa natural identificada ou identificável.</li>
+                        <li><strong>Tratamento:</strong> Toda operação realizada com dados pessoais, como coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação ou controle da informação, modificação, comunicação, transferência, difusão ou extração.</li>
+                        <li><strong>Controlador:</strong> Pessoa natural ou jurídica, de direito público ou privado, a quem competem as decisões referentes ao tratamento de dados pessoais.</li>
+                        <li><strong>Operador:</strong> Pessoa natural ou jurídica, de direito público ou privado, que realiza o tratamento de dados pessoais em nome do controlador.</li>
+                        <li><strong>Encarregado (DPO):</strong> Pessoa indicada pelo controlador e operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2>3. Dados que Coletamos</h2>
+                <h3>3.1. Informações fornecidas diretamente por você</h3>
+                <ul>
+                    <li>Nome completo, e-mail, telefone e endereço</li>
+                    <li>Dados de cadastro e acesso à plataforma</li>
+                    <li>Informações de pagamento e faturamento</li>
+                    <li>Comunicações conosco (chat, e-mail, telefone)</li>
+                    <li>Conteúdo que você envia ou posta em nossa plataforma</li>
+                </ul>
+                
+                <h3>3.2. Informações coletadas automaticamente</h3>
+                <ul>
+                    <li>Dados de uso de nossa plataforma (logs, IP, tipo de dispositivo, navegador)</li>
+                    <li>Informações de cookies e tecnologias similares</li>
+                    <li>Dados de interação com nossos conteúdos e serviços</li>
+                </ul>
+                
+                <h3>3.3. Informações de terceiros</h3>
+                <p>Podemos receber informações sobre você de provedores de serviços terceirizados, como empresas de análise de dados, redes de publicidade e parceiros de negócios.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>4. Bases Legais para o Tratamento de Dados</h2>
+                <p>Todo tratamento de dados pessoais pela Jota Investimentos é fundamentado em uma das bases legais previstas na LGPD:</p>
+                <ul>
+                    <li><strong>Consentimento:</strong> Para finalidades específicas, solicitaremos seu consentimento livre, informado e inequívoco.</li>
+                    <li><strong>Execução de contrato:</strong> Quando necessário para a prestação de serviços solicitados por você.</li>
+                    <li><strong>Obrigação legal:</strong> Para o cumprimento de obrigações legais ou regulatórias.</li>
+                    <li><strong>Interesses legítimos:</strong> Para realizar melhorias em nossos serviços, marketing direto e prevenção à fraude, sempre respeitando seus direitos e liberdades fundamentais.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>5. Finalidades do Tratamento</h2>
+                <p>Utilizamos seus dados pessoais para as seguintes finalidades:</p>
+                <ul>
+                    <li>Fornecer, operar e manter nossos serviços</li>
+                    <li>Processar transações e enviar confirmações</li>
+                    <li>Comunicar-se com você sobre serviços, atualizações e promoções</li>
+                    <li>Fornecer suporte ao cliente e responder a solicitações</li>
+                    <li>Personalizar e melhorar sua experiência em nossa plataforma</li>
+                    <li>Desenvolver novos produtos, serviços e funcionalidades</li>
+                    <li>Analisar tendências e uso de nossos serviços</li>
+                    <li>Prevenir, detectar e investigar atividades fraudulentas ou ilegais</li>
+                    <li>Cumprir obrigações legais e regulatórias</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>6. Compartilhamento de Dados</h2>
+                <p>Podemos compartilhar suas informações pessoais nas seguintes situações:</p>
+                
+                <h3>6.1. Com prestadores de serviços</h3>
+                <p>Com empresas que prestam serviços em nosso nome, como processamento de pagamentos, hospedagem de dados, análise de dados, atendimento ao cliente, marketing e publicidade.</p>
+                
+                <h3>6.2. Por exigência legal</h3>
+                <p>Quando necessário para cumprir obrigação legal, regulatória, processo judicial ou solicitação governamental.</p>
+                
+                <h3>6.3. Para proteção de direitos</h3>
+                <p>Quando acreditarmos que a divulgação é necessária para proteger nossos direitos, segurança ou propriedade, ou os direitos, segurança ou propriedade de terceiros.</p>
+                
+                <h3>6.4. Em transações empresariais</h3>
+                <p>Em caso de fusão, aquisição, reestruturação ou venda de ativos, suas informações podem ser transferidas como parte dessa transação.</p>
+                
+                <div class="important-note">
+                    <h4>Transferência Internacional</h4>
+                    <p>Alguns de nossos prestadores de serviços podem estar localizados fora do Brasil. Nesses casos, garantimos que suas informações estarão protegidas por cláusulas contratuais ou outros instrumentos adequados às leis de proteção de dados.</p>
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2>7. Cookies e Tecnologias Similares</h2>
+                <p>Utilizamos cookies e tecnologias similares para coletar informações sobre sua interação com nossa plataforma. Essas tecnologias nos ajudam a:</p>
+                <ul>
+                    <li>Lembrar suas preferências e configurações</li>
+                    <li>Analisar como você usa nossos serviços</li>
+                    <li>Entregar anúncios relevantes e medir sua eficácia</li>
+                    <li>Melhorar a segurança de nossos serviços</li>
+                </ul>
+                <p>Você pode controlar o uso de cookies através das configurações do seu navegador. No entanto, a desativação de cookies pode limitar sua capacidade de usar alguns recursos de nossa plataforma.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>8. Retenção de Dados</h2>
+                <p>Manteremos suas informações pessoais apenas pelo tempo necessário para cumprir as finalidades para as quais foram coletadas, incluindo para fins de cumprimento de obrigações legais, regulatórias, contábeis ou de relatórios.</p>
+                <p>Para determinar o período apropriado de retenção, consideramos a quantidade, natureza e sensibilidade dos dados, a potencial probabilidade de dano decorrente do uso não autorizado ou divulgação, as finalidades para as quais tratamos os dados e se podemos alcançar tais finalidades por outros meios.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>9. Segurança das Informações</h2>
+                <p>Implementamos medidas técnicas e organizacionais apropriadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição. Estas medidas incluem:</p>
+                <ul>
+                    <li>Criptografia de dados em repouso e em trânsito</li>
+                    <li>Controles de acesso baseados em função e necessidade de conhecimento</li>
+                    <li>Monitoramento contínuo de nossa infraestrutura para detectar e prevenir vulnerabilidades</li>
+                    <li>Testes regulares de segurança e avaliações de vulnerabilidade</li>
+                    <li>Treinamento de conscientização sobre segurança para nossos colaboradores</li>
+                </ul>
+                <p>Embora adotemos medidas para proteger suas informações, nenhum sistema de segurança é infalível. Não podemos garantir a segurança absoluta de suas informações.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>10. Seus Direitos</h2>
+                <p>De acordo com a LGPD, você tem os seguintes direitos em relação aos seus dados pessoais:</p>
+                <ul>
+                    <li><strong>Confirmação e acesso:</strong> Direito de confirmar que realizamos o tratamento de seus dados e de acessá-los.</li>
+                    <li><strong>Correção:</strong> Direito de solicitar a correção de dados incompletos, inexatos ou desatualizados.</li>
+                    <li><strong>Anonimização, bloqueio ou eliminação:</strong> Direito de solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD.</li>
+                    <li><strong>Portabilidade:</strong> Direito de solicitar a portabilidade de seus dados a outro fornecedor de serviço.</li>
+                    <li><strong>Eliminação:</strong> Direito de solicitar a eliminação de dados tratados com base no seu consentimento.</li>
+                    <li><strong>Informação sobre compartilhamento:</strong> Direito de ser informado sobre as entidades públicas e privadas com as quais compartilhamos seus dados.</li>
+                    <li><strong>Revogação do consentimento:</strong> Direito de revogar seu consentimento a qualquer momento.</li>
+                    <li><strong>Oposição:</strong> Direito de se opor ao tratamento de dados realizado com base em interesses legítimos.</li>
+                </ul>
+                
+                <div class="important-note">
+                    <h4>Como exercer seus direitos</h4>
+                    <p>Para exercer qualquer um desses direitos, entre em contato conosco através do email <strong>privacidade@jotainvestimentos.com</strong>. Responderemos a todas as solicitações dentro dos prazos estabelecidos pela LGPD.</p>
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2>11. Alterações nesta Política</h2>
+                <p>Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas práticas ou por outros motivos operacionais, legais ou regulatórios. A versão atualizada será publicada em nossa plataforma com data de revisão atualizada.</p>
+                <p>Notificaremos você sobre mudanças materiais nesta Política por meio de avisos em nossa plataforma ou por outros meios de comunicação apropriados.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>12. Encarregado de Proteção de Dados</h2>
+                <p>Nomeamos um Encarregado de Proteção de Dados (DPO) para supervisionar o cumprimento desta política e da LGPD. Você pode entrar em contato com nosso DPO através do email:</p>
+                <p><strong>dpo@jotainvestimentos.com</strong></p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>13. Legislação Aplicável</h2>
+                <p>Esta Política de Privacidade é regida pelas leis da República Federativa do Brasil, em especial pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                        <li><a href="https://jotainvestimentos.com">Robôs de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Cursos Educativos</a></li>
+                        <li><a href="https://jotainvestimentos.com">Sinais de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Domador de Leão</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

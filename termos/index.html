@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso | Jota Investimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --dark: #121212;
+            --gray: #6e6e73;
+            --light: #f5f5f7;
+            --accent: #3a3a3a;
+            --text-on-dark: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark);
+        }
+        
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--text-on-dark) !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--light);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        /* Hero Section */
+        .terms-hero {
+            padding-top: 150px;
+            padding-bottom: 50px;
+            background: linear-gradient(to bottom, var(--light) 0%, #ffffff 100%);
+            text-align: center;
+        }
+        
+        .terms-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .terms-hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            background-color: var(--primary);
+            color: var(--text-on-dark);
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Terms Content */
+        .terms-content {
+            padding: 50px 0;
+            background-color: var(--light);
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+        }
+        
+        .terms-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .terms-section h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: var(--primary);
+        }
+        
+        .terms-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .terms-section ul, .terms-section ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .terms-section li {
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .important-note {
+            background-color: #fff8e6;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .important-note h4 {
+            color: #d4a424;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-on-dark);
+            padding: 70px 0 30px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-on-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-on-dark);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-on-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--text-on-dark);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        .cnpj {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .terms-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .terms-hero {
+                padding-top: 130px;
+            }
+            
+            .terms-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .terms-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .terms-section h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="https://jotainvestimentos.com">
+                <img src="https://lp.jotainvestimentos.com/cpl-c/images/svg/logotipo-mmk.svg" alt="Jota Investimentos" class="logo">
+            </a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="https://jotainvestimentos.com">Home</a></li>
+                    <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                    <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+                    <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+                    <li><a href="https://jotainvestimentos.com" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="https://jotainvestimentos.com">Home</a></li>
+            <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+            <li><a href="https://jotainvestimentos.com">Robôs</a></li>
+            <li><a href="https://jotainvestimentos.com">Cursos</a></li>
+            <li><a href="https://jotainvestimentos.com">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Termos de Uso</h1>
+            <p>Leia atentamente os termos e condições que regem o uso dos serviços da Jota Investimentos</p>
+        </div>
+    </section>
+
+    <!-- Last Updated -->
+    <div class="last-updated">
+        <div class="container">
+            <p><strong>Última atualização:</strong> 25 de Agosto de 2025</p>
+        </div>
+    </div>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-section">
+                <h2>1. Aceitação dos Termos</h2>
+                <p>Ao acessar e utilizar os serviços da Jota Investimentos, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concordar com qualquer parte destes termos, não poderá acessar nossos serviços.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Definições</h2>
+                <p>Para os fins destes Termos de Uso, as seguintes definições se aplicam:</p>
+                <ul>
+                    <li><strong>"Plataforma"</strong>: Refere-se ao site, aplicativos e serviços oferecidos pela Jota Investimentos.</li>
+                    <li><strong>"Usuário"</strong>: Qualquer pessoa que acesse ou utilize nossa Plataforma.</li>
+                    <li><strong>"Conteúdo"</strong>: Todas as informações, textos, gráficos, fotos ou outros materiais disponibilizados através da Plataforma.</li>
+                    <li><strong>"Serviços"</strong>: Todos os produtos, serviços e conteúdo oferecidos pela Jota Investimentos.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Serviços Oferecidos</h2>
+                <p>A Jota Investimentos fornece:</p>
+                <ul>
+                    <li>Educação financeira e cursos sobre mercado cripto</li>
+                    <li>Análises e sinais de trading</li>
+                    <li>Ferramentas e robôs de trading</li>
+                    <li>Conteúdo educacional sobre investimentos</li>
+                    <li>Comunidade para discussão de estratégias</li>
+                </ul>
+                <div class="important-note">
+                    <h4>Nota Importante</h4>
+                    <p>Nossos serviços são educacionais e informativos. Não fornecemos aconselhamento financeiro personalizado e não somos uma corretora de valores. Todas as decisões de investimento são de responsabilidade exclusiva do usuário.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Cadastro e Conta do Usuário</h2>
+                <h3>4.1. Requisitos para Cadastro</h3>
+                <p>Para acessar alguns de nossos serviços, você precisará criar uma conta fornecendo informações precisas, completas e atualizadas.</p>
+                
+                <h3>4.2. Responsabilidade pela Conta</h3>
+                <p>Você é responsável por manter a confidencialidade de suas credenciais de login e por todas as atividades que ocorram em sua conta.</p>
+                
+                <h3>4.3. Verificação de Identidade</h3>
+                <p>Podemos solicitar documentação para verificar sua identidade e evitar fraudes, de acordo com as leis aplicáveis.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Propriedade Intelectual</h2>
+                <p>Todo o conteúdo disponível na Plataforma, incluindo textos, gráficos, logos, imagens, vídeos, cursos e software, é propriedade da Jota Investimentos ou de seus licenciadores e está protegido por leis de direitos autorais e propriedade intelectual.</p>
+                
+                <h3>5.1. Licença de Uso</h3>
+                <p>Concedemos a você uma licença limitada, não exclusiva e intransferível para acessar e usar nosso conteúdo para fins pessoais e não comerciais, sujeito a estes Termos.</p>
+                
+                <h3>5.2. Restrições</h3>
+                <p>Você concorda em não:</p>
+                <ul>
+                    <li>Reproduzir, distribuir ou modificar nosso conteúdo sem autorização prévia</li>
+                    <li>Utilizar nosso conteúdo para qualquer finalidade comercial não autorizada</li>
+                    <li>Contornar medidas tecnológicas de proteção de nosso conteúdo</li>
+                    <li>Reverse engineer, descompilar ou desmontar qualquer aspecto de nossa Plataforma</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. Pagamentos e Renovações</h2>
+                <h3>6.1. Preços e Taxas</h3>
+                <p>Os preços de nossos serviços são divulgados em nossa Plataforma e podem ser alterados a qualquer momento, com aviso prévio.</p>
+                
+                <h3>6.2. Pagamento</h3>
+                <p>O pagamento é processado através de gateways seguros. Você concorda em fornecer informações de pagamento precisas e autoriza o débito pelos serviços selecionados.</p>
+                
+                <h3>6.3. Renovações Automáticas</h3>
+                <p>Alguns serviços podem ter renovação automática. Você será notificado antes de cada renovação e poderá cancelar a qualquer momento.</p>
+                
+                <h3>6.4. Reembolsos</h3>
+                <p>Nossa política de reembolso está detalhada em nossos Termos de Compra. Em geral, oferecemos garantia de 7 dias para a maioria de nossos produtos digitais.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. Limitação de Responsabilidade</h2>
+                <p>A Jota Investimentos não se responsabiliza por:</p>
+                <ul>
+                    <li>Perdas financeiras resultantes de decisões de investimento tomadas com base em nosso conteúdo</li>
+                    <li>Interrupções temporárias ou permanentes no acesso à Plataforma</li>
+                    <li>Ações de terceiros que acessem sua conta com suas credenciais</li>
+                    <li>Conteúdo gerado por usuários em nossa comunidade</li>
+                    <li>Variações do mercado financeiro e de criptomoedas</li>
+                </ul>
+                
+                <div class="important-note">
+                    <h4>Isenção de Responsabilidade</h4>
+                    <p>O mercado de criptomoedas é altamente volátil e envolve riscos significativos. O desempenho passado não garante resultados futuros. Você é exclusivamente responsável por suas decisões de investimento.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. Conduta do Usuário</h2>
+                <p>Você concorda em não:</p>
+                <ul>
+                    <li>Utilizar nossa Plataforma para qualquer atividade ilegal</li>
+                    <li>Compartilhar conteúdo ofensivo, difamatório ou fraudulento</li>
+                    <li>Tentar obter acesso não autorizado a outros sistemas ou contas</li>
+                    <li>Utilizar bots, spiders ou outros métodos automatizados para acessar nossa Plataforma</li>
+                    <li>Interferir na operação normal de nossa Plataforma</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Comunicação</h2>
+                <p>Ao criar uma conta, você concorda em receber comunicações eletrônicas nossas, incluindo newsletters, atualizações de serviços e informações promocionais. Você pode optar por não receber comunicações promocionais a qualquer momento.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Privacidade</h2>
+                <p>Nosso uso de suas informações pessoais é regido por nossa Política de Privacidade, que está incorporada a estes Termos por referência.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>11. Rescisão</h2>
+                <p>Podemos suspender ou encerrar seu acesso à nossa Plataforma a qualquer momento, sem aviso prévio, se violar estes Termos. Após a rescisão, todas as disposições que por sua natureza devem sobreviver permanecerão em vigor.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>12. Alterações nos Termos</h2>
+                <p>Podemos modificar estes Termos a qualquer momento. As alterações entrarão em vigor após a publicação na Plataforma. O uso continuado de nossos serviços após tais modificações constitui sua aceitação dos Termos revisados.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>13. Lei Aplicável</h2>
+                <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Qualquer disputa será resolvida no foro da comarca onde a empresa tem sua sede.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>14. Disposições Gerais</h2>
+                <h3>14.1. Integralidade do Acordo</h3>
+                <p>Estes Termos constituem o acordo completo entre você e a Jota Investimentos em relação ao uso de nossos serviços.</p>
+                
+                <h3>14.2. Tolerância</h3>
+                <p>O fato de a Jota Investimentos não exigir o cumprimento de qualquer disposição destes Termos não constituirá uma renúncia a tal disposição.</p>
+                
+                <h3>14.3. Divisibilidade</h3>
+                <p>Se qualquer disposição destes Termos for considerada inválida ou inexequível, as demais disposições permanecerão em pleno vigor e efeito.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>15. Contato</h2>
+                <p>Para quaisquer dúvidas sobre estes Termos de Uso, entre em contato conosco através do email: <strong>legal@jotainvestimentos.com</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jota Investimentos</h3>
+                    <p>Democratizando o acesso ao mercado cripto, trazendo as melhores oportunidades diretamente para você.</p>
+                    <div class="social-links">
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-telegram"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-youtube"></i></a>
+                        <a href="https://jotainvestimentos.com"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Mesa Proprietária</a></li>
+                        <li><a href="https://jotainvestimentos.com">Robôs de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Cursos Educativos</a></li>
+                        <li><a href="https://jotainvestimentos.com">Sinais de Trading</a></li>
+                        <li><a href="https://jotainvestimentos.com">Domador de Leão</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="https://jotainvestimentos.com">Termos de Uso</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Privacidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Isenção de Responsabilidade</a></li>
+                        <li><a href="https://jotainvestimentos.com">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="mailto:suporte@jotainvestimentos.com">suporte@jotainvestimentos.com</a></li>
+                        <li><a href="mailto:comercial@jotainvestimentos.com">comercial@jotainvestimentos.com</a></li>
+                        <li><a href="https://jotainvestimentos.com">Central de Ajuda</a></li>
+                        <li><a href="https://jotainvestimentos.com">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Jota Investimentos. Todos os direitos reservados.
+                <div class="cnpj">CNPJ: 40.734.313-0001/98</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
