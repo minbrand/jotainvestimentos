@@ -705,16 +705,16 @@ mark.marked {
   transform: translateX(-50%) scale(0.85);
   transition: all 0.5s ease;
 }
-.navBar img.logotipo-er {
+.navBar img.logotipo-mb {
   width: 120px;
 }
-.navBar img.logotipo-opt {
+.navBar img.logotipo-ne {
   width: 105px;
 }
-.navBar img.logotipo-mmk {
-  width: 80px;
+.navBar img.logotipo-ji {
+  width: 90px;
 }
-.navBar img.logotipo-sd, .navBar img.logotipo-mt {
+.navBar img.logotipo-ac, .navBar img.logotipo-st {
   width: 150px;
   margin-top: 7px;
 }
