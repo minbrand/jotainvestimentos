@@ -1292,7 +1292,7 @@ main .typ_success > p span, main .ctdwn_content > p span, main .typ_loading > p 
   width: 100%;
   padding: 70px 0 70px 0;
   overflow: hidden;
-  background-color: rgba(38.85, 44.45, 79.1, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* ====================================== */
