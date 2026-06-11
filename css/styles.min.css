@@ -331,8 +331,15 @@ body::after {
 }
 @media only screen and (min-width: 768px) {
   body::after {
-    background-attachment: fixed;
+
+	background: #2c3e50;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   /*
+	  background-attachment: fixed;
     background-image: url("../images/bg-desk.svg");
+	  */
   }
 }
 body {
@@ -344,11 +351,18 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+
+	background: #2c3e50;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	/*
   background-image: url("../images/pattern.webp");
   background-repeat: repeat;
   background-position: top left;
   background-size: auto;
   opacity: 0.35;
+	*/
 }
 
 /* =========================================
