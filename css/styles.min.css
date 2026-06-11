@@ -324,17 +324,21 @@ body::after {
   background-size: cover;
   background-attachment: initial; */
 
-	background: #2c3e50;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #2a2a2a, #000);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #2a2a2a, #000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+
+background: #152331;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000000, #152331);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000000, #152331); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+	
 }
 @media only screen and (min-width: 768px) {
   body::after {
 
-	background: #2c3e50;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #2a2a2a, #000);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #2a2a2a, #000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #152331;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000000, #152331);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000000, #152331); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
    /*
 	  background-attachment: fixed;
@@ -352,9 +356,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
 
-	background: #2c3e50;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #2a2a2a, #000);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #2a2a2a, #000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #152331;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000000, #152331);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000000, #152331); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 	/*
   background-image: url("../images/pattern.webp");
