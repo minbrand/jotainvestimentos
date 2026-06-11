@@ -1407,27 +1407,27 @@ main .typ_success > p span, main .ctdwn_content > p span, main .typ_loading > p 
 /*============================================
 ❯❯❯ Seção testimonial
 ============================================*/
-.empiricus {
+.jota {
   display: block;
   width: 100%;
   padding: 70px 0 70px 0;
   overflow: hidden;
-  background-color: rgba(38.85, 44.45, 79.1, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* ====================================== */
-.empiricus_content {
+.jota_content {
   display: block;
   width: 100%;
   max-width: 90%;
   margin: 0 auto;
 }
 @media only screen and (min-width: 992px) {
-  .empiricus_content {
+  .jota_content {
     max-width: 950px;
   }
 }
-.empiricus_content h2 {
+.jota_content h2 {
   margin-bottom: 35px;
   padding: 0 20px;
   font-size: 24px;
@@ -1437,11 +1437,11 @@ main .typ_success > p span, main .ctdwn_content > p span, main .typ_loading > p 
   text-align: left;
 }
 @media only screen and (min-width: 768px) {
-  .empiricus_content h2 {
+  .jota_content h2 {
     font-size: 26px;
   }
 }
-.empiricus_content p {
+.jota_content p {
   margin-bottom: 35px;
   padding: 0 20px;
   font-size: 20px;
@@ -1451,7 +1451,7 @@ main .typ_success > p span, main .ctdwn_content > p span, main .typ_loading > p 
   text-align: left;
 }
 @media only screen and (min-width: 768px) {
-  .empiricus_content p {
+  .jota_content p {
     font-size: 22px;
   }
 }
