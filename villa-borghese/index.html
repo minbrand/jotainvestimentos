@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residencial Villa Borghese - Mercado de Luxo</title>
+    <style>
+        /* CSS: Estilo Apple Designer Imóveis de Luxo */
+        :root {
+            --bg-color: #f5f5f7;
+            --surface-color: #ffffff;
+            --text-main: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-color: #0066cc;
+            --border-radius: 20px;
+            --shadow-subtle: 0 8px 30px rgba(0,0,0,0.04);
+            --shadow-strong: 0 20px 40px rgba(0,0,0,0.08);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        main {
+            min-width: 0; 
+        }
+
+        /* Topo */
+        .header-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .badge-dark { background-color: #1d1d1f; color: #ffffff; }
+        .badge-light { background-color: #ffffff; border: 1px solid #e5e5ea; color: #1d1d1f; }
+        .badge-light .dot { color: #86868b; margin-right: 6px; font-size: 0.8rem; }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            color: var(--text-main);
+        }
+
+        .location {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        /* Preço */
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .price-currency { font-size: 1.5rem; font-weight: 500; color: var(--text-main); }
+        .price-main { font-size: 3.8rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+        .price-rental { font-size: 1.15rem; color: var(--text-secondary); margin-left: 4px; margin-right: 12px; }
+        
+        .condo-pill {
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            display: inline-block;
+        }
+
+        /* Cartões */
+        .card {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow-subtle);
+            margin-bottom: 30px;
+        }
+
+        /* Slider de Fotos */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-strong);
+            background-color: #000;
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slider-track img {
+            flex: 0 0 100%; 
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.75);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .slider-btn:hover { background: rgba(255,255,255,0.95); }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+
+        h2 { font-size: 1.45rem; font-weight: 600; margin-bottom: 22px; letter-spacing: -0.01em; }
+
+        /* Características */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+        .feature-item { padding: 20px 15px; background: #fbfbfd; border-radius: 14px; text-align: center; }
+        .feature-item strong { display: block; font-size: 1.3rem; font-weight: 600; color: var(--text-main); }
+        .feature-item span { color: var(--text-secondary); font-size: 0.85rem; }
+
+        /* Comodidades */
+        .amenities-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .amenities-list li { display: flex; align-items: center; gap: 10px; color: #333336; }
+        .amenities-list li::before { content: "✓"; color: #000; font-weight: 700; }
+
+        /* Plantas Baixas */
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn {
+            padding: 10px 22px;
+            border: none;
+            background: #e8e8ed;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active { background: var(--text-main); color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-content img { 
+            width: 100%; border-radius: 14px; border: 1px solid #e5e5ea; height: auto; 
+            cursor: zoom-in; transition: opacity 0.2s;
+        }
+        .tab-content img:hover { opacity: 0.95; }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-content {
+            max-width: 90%; max-height: 85%; border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3); transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); background: white; padding: 10px;
+        }
+        .lightbox.active .lightbox-content { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 25px; right: 35px; color: #fff; font-size: 38px;
+            cursor: pointer; font-weight: 300; width: 45px; height: 45px;
+            background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; border-radius: 50%;
+        }
+
+        /* Vídeo */
+        .video-container {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-subtle);
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Sidebar e Botões */
+        .sidebar { position: sticky; top: 40px; }
+        .broker-profile { text-align: center; margin-bottom: 25px; }
+        .broker-img {
+            width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 3px solid #fff;
+        }
+        .broker-name { font-weight: 600; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--text-main); }
+        .broker-creci { color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; }
+
+        .btn {
+            display: inline-block; width: 100%; padding: 16px 20px; border-radius: 14px; text-align: center;
+            text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer; border: none;
+        }
+        .btn:hover { transform: scale(0.99); opacity: 0.92; }
+        .btn-primary { background-color: var(--text-main); color: #fff; }
+        .btn-secondary { background-color: #e8e8ed; color: var(--text-main); margin-top: 12px;}
+
+        /* Rodapé */
+        footer { background-color: #f5f5f7; border-top: 1px solid #e5e5ea; padding: 50px 20px; margin-top: 60px; font-size: 0.85rem; color: #6e6e73; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-links a { color: #424245; text-decoration: none; margin-left: 20px; }
+
+        /* ------------------------------------------- */
+        /* RESPONSIVIDADE (Telas Menores e Celulares)  */
+        /* ------------------------------------------- */
+        
+        /* Tablets e Notebooks Pequenos */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; margin: 20px auto; }
+            .sidebar { position: static; }
+            .amenities-list { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links a { margin: 0 10px; }
+        }
+
+        /* Celulares (Ajuste das Fontes) */
+        @media (max-width: 768px) {
+            /* Título muito menor no celular */
+            h1 { font-size: 1.8rem; margin-bottom: 10px; }
+            
+            /* Ajuste de Preços */
+            .price-main { font-size: 2.6rem; }
+            .price-currency { font-size: 1.3rem; }
+            .price-rental { font-size: 1rem; margin-bottom: 10px;}
+            
+            /* Ajuste de pílulas (badges e condomínio) */
+            .condo-pill { font-size: 0.85rem; padding: 6px 12px; }
+            .badge-pill { font-size: 0.8rem; padding: 6px 12px; }
+            
+            /* Reduz altura do slider de fotos para caber na tela mobile */
+            .slider-container { height: 280px; }
+            
+            /* Reduz fonte de localização e cartões */
+            .location { font-size: 0.95rem; }
+            h2 { font-size: 1.25rem; }
+            .card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Coluna Principal (Esquerda) -->
+        <main>
+            <!-- Badges -->
+            <div class="header-badges">
+                <span class="badge-pill badge-dark">● À Venda</span>
+                <span class="badge-pill badge-light"><span class="dot">●</span>Disponível para Aluguel</span>
+                <span class="badge-pill badge-light">🏷️ Lançamento</span>
+            </div>
+
+            <h1>Residencial Villa Borghese — Apartamento de Luxo com Vista para o Mar</h1>
+            
+            <p class="location">
+                <svg width="15" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Rua Carlos Vasconcelos, 987 — Meireles, Fortaleza · CE
+            </p>
+
+            <!-- Preço Bloco -->
+            <div class="price-container">
+                <span class="price-currency">R$</span>
+                <span class="price-main">4.850.000</span>
+                <span class="price-rental">ou R$ 18.500/mês no aluguel</span>
+                <div class="condo-pill">Condomínio R$ 2.200</div>
+            </div>
+
+            <!-- Slider de Fotos (Imagens estáticas reais agora) -->
+            <div class="slider-container">
+                <div class="slider-track" id="slider">
+                    <!-- Foto 1 (Fachada / Casa) -->
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Residencial Externo">
+                    <!-- Foto 2 (Sala de Estar) -->
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Living Integrado">
+                    <!-- Foto 3 (Quarto) -->
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Suíte Master Premium">
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
+            <!-- Descrição -->
+            <section class="card">
+                <h2>O Conceito</h2>
+                <p>O Residencial Villa Borghese reúne a essência do morar bem na localização mais estratégica do Meireles. Um projeto conceitual que valoriza a iluminação natural, ventilação constante e entrega uma vista permanente e indevassável para o oceano de Fortaleza. Sofisticação em cada centímetro planejado.</p>
+            </section>
+
+            <!-- Fatos e Características -->
+            <section class="card">
+                <h2>Fatos e Características</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <strong>320m²</strong>
+                        <span>Área Útil</span>
+                    </div>
+                    <div class="feature-item">
+                        <strong>4</strong>
+                        <span>Suítes Completas</span>
+                    </div>
+                    <div class="feature-item">
+                        <strong>4</strong>
+                        <span>Vagas Cobertas</span>
+                    </div>
+                    <div class="feature-item">
+                        <strong>1</strong>
+                        <span>Por Andar</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comodidades -->
+            <section class="card">
+                <h2>Comodidades do Empreendimento</h2>
+                <ul class="amenities-list">
+                    <li>Piscina Aquecida com Raia</li>
+                    <li>Lounge Gourmet Suspenso</li>
+                    <li>Academia Profissional Matrix™</li>
+                    <li>Portaria Blindada com Alerta</li>
+                    <li>Gerador Full para todo o Prédio</li>
+                    <li>Vagas com Carregador Elétrico</li>
+                </ul>
+            </section>
+
+            <!-- Plantas Baixas com Lightbox ativo -->
+            <section class="card">
+                <h2>Plantas Disponíveis</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('planta1', event)">Tipo Padrão (320m²)</button>
+                    <button class="tab-btn" onclick="openTab('planta2', event)">Opção Ampliada (320m²)</button>
+                </div>
+                <div id="planta1" class="tab-content active">
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:10px;">💡 Clique na planta para ampliar em alta definição</p>
+                    <!-- Imagem de planta genérica e estática -->
+                    <img src="https://dummyimage.com/900x600/e5e5ea/1d1d1f.png&text=Insira+Sua+Planta+Baixa+Aqui+(Tipo+Padrao)" alt="Planta Baixa Tipo Padrão" onclick="openLightbox(this)">
+                </div>
+                <div id="planta2" class="tab-content">
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:10px;">💡 Clique na planta para ampliar em alta definição</p>
+                    <!-- Imagem de planta genérica e estática -->
+                    <img src="https://dummyimage.com/900x600/e5e5ea/1d1d1f.png&text=Insira+Sua+Planta+Baixa+Aqui+(Opcao+Ampliada)" alt="Planta Baixa Opção Ampliada" onclick="openLightbox(this)">
+                </div>
+            </section>
+
+            <!-- Vídeo -->
+            <section class="card">
+                <h2>Tour em Vídeo</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
+                </div>
+            </section>
+        </main>
+
+        <!-- Barra Lateral Atualizada com Seus Dados -->
+        <aside>
+            <div class="card sidebar">
+                <div class="broker-profile">
+                    <img src="https://jotacorretor.com/storage/-1776621282-150x150.jpg" alt="Jonathan Amorim" class="broker-img">
+                    <div class="broker-name">Jonathan Amorim</div>
+                    <div class="broker-creci">CRECI 28444</div>
+                </div>
+
+                <a href="https://wa.me/5585999999999" target="_blank" class="btn btn-primary">Falar com Corretor</a>
+                
+                <hr style="margin: 25px 0; border: 0; border-top: 1px solid #e5e5ea;">
+                
+                <h3 style="font-size: 1.05rem; margin-bottom: 8px; font-weight:600;">Book Digital</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">Tenha acesso às especificações técnicas completas do memorial descritivo.</p>
+                <a href="#" class="btn btn-secondary">Baixar Apresentação</a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Planta Ampliada" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <p><strong>Jonathan Amorim</strong> · Corretor de Imóveis de Luxo · CRECI 28444</p>
+                <p style="margin-top: 4px; color: #a1a1a6;">Especialista no mercado imobiliário High-End de Fortaleza, Ceará.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interativo -->
+    <script>
+        // Slider de Imagens
+        let currentSlide = 0;
+        function moveSlide(direction) {
+            const track = document.getElementById('slider');
+            const totalSlides = track.children.length;
+            currentSlide += direction;
+            
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            else if (currentSlide >= totalSlides) currentSlide = 0;
+            
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Navegação de Abas (Planta Baixa)
+        function openTab(tabId, event) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(c => c.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Lightbox para Zoom na Planta
+        function openLightbox(imgElement) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgElement.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        // Fechar lightbox no botão Esc
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") closeLightbox();
+        });
+    </script>
+</body>
+</html>
