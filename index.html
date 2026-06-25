@@ -280,6 +280,15 @@
 		</div>
 	</footer>
 	<script src="js/scripts.min.js"></script>
+	<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "aa4b29db-463f-4e33-9542-1b882d0a47eb",
+    });
+  });
+</script>
 </body>
 
 </html>
